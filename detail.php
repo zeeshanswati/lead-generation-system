@@ -6,8 +6,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 } else {
     header("Location: index.php");
 }
-// echo "<pre>";
-// print_r($lead);
 ?>
 <!DOCTYPE html>
 <html lang="en">

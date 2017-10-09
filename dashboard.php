@@ -2,9 +2,6 @@
 require_once('includes/QueryBuilder.php');
 $dbObj = new QueryBuilder();
 $leads = $dbObj->table('leads')->orderBy('created_at', 'DESC')->get();
-
-// echo "<pre>";
-// print_r($leads);
 ?>
 <!DOCTYPE html>
 <html lang="en">

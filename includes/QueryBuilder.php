@@ -4,9 +4,9 @@ class QueryBuilder {
 	
 	static $connetion;
 	private $dbHost     = '127.0.0.1';
-	private $dbName     =  'boldleads'; //null;
-	private $dbUser     =  'root'; //null;
-	private $dbPassword =  ''; //null;
+	private $dbName     =  'boldleads';
+	private $dbUser     =  'root';
+	private $dbPassword =  '';
 
 	
 	private $table     = null;
@@ -24,9 +24,7 @@ class QueryBuilder {
 		if (isset(self::$connetion)) {
 			return self::$connetion;
 		}
-
 		try {
-			print_r(self::$connetion);
 			$dsn = 'mysql:host=' .$this->dbHost. ';dbname=' .$this->dbName;
 		    return self::$connetion = new PDO($dsn, $this->dbUser, $this->dbPassword);
 		} catch (PDOException $e) {
@@ -49,14 +47,11 @@ class QueryBuilder {
 	}
 
 	public function insert($array = []) {
-		// print_r($array);
-		// exit;
 		if (empty($array)) {
 			exit("Query not found");
 		}
 		$this->makeInsertStatement($array);
 		
-		//exit;
 		$statement = self::$connetion->prepare($this->statement);
 		$statement->execute();
 		return self::$connetion->lastInsertId();
@@ -75,12 +70,9 @@ class QueryBuilder {
 	}
 
 	public function update($array = []) {
-		//echo "UPDATE";
 		$this->makeUpdateStatement($array);
-		//echo $this->statement;
 		$statement = self::$connetion->prepare($this->statement);
 		return $statement->execute();
-		// return self::$connetion->lastInsertId();
 	}
 
 	private function makeUpdateStatement($array) {
@@ -93,7 +85,7 @@ class QueryBuilder {
 		$setColumnsValues .= " updated_at = '" . date("Y-m-d H:i:s") . "' ";
 		
 		$this->statement = 'update '. $this->table . " set ". $setColumnsValues ;
-		//echo $this->statement;exit;
+		
 		if (!empty($this->where)) {
 			$this->statement .= ' where ' . $this->where;
 		}
@@ -106,10 +98,7 @@ class QueryBuilder {
 		} else {
 			$this->columns = implode(", ", $columns);
 		}
-		//print_r($this->where );
 		return $this->executeSelectStatement();
-		//return $this->execute();
-		//return self::$connetion->fetchAll();
 	}
 
 	private function executeSelectStatement() {
@@ -120,7 +109,7 @@ class QueryBuilder {
 		if (!empty($this->orderBy)) {
 			$this->statement .=  $this->orderBy;
 		}
-		//echo $this->statement;
+		
 		$statement = self::$connetion->prepare($this->statement);
 		$statement->execute();
 		return  $statement->fetchAll();
@@ -144,12 +133,3 @@ class QueryBuilder {
 		return  $statement->fetch();
 	}
 }
-
-
-
-
-
-
-
-
-
