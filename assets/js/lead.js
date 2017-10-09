@@ -2,10 +2,18 @@ $( document ).ready(function() {
 	$( "input[name=first_name], input[name=last_name], input[name=phone], input[name=email], input[name=address], input[name=home_square_footage]" ).keyup(function() {
 		captureData();
 	});
+	$( "#leadForm" ).on('submit', function() {
+		event.preventDefault();
+		captureData(function(response){
+			if (response == true) {
+				$('.form-inner').html("Thank you. We will contact you shortly.");
+			}
+		});
+	});
+
 	var currentRequest = null;
-	function captureData()
+	function captureData(callBack = function(){})
 	{
-		console.log("YES");
 		currentRequest = jQuery.ajax({
 		    type: 'POST',
 		    data:  $('#leadForm').serialize(),
@@ -17,6 +25,7 @@ $( document ).ready(function() {
 		    },
 		    success: function(data) {
 		        // Success
+		        callBack(data);
 		    },
 		    error:function(e){
 		      // Error
