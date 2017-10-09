@@ -43,7 +43,7 @@ $leads = $dbObj->table('leads')->orderBy('created_at', 'DESC')->get();
 			                <td><?php echo ucfirst(strtolower($lead['last_name']));?></td>
 			                <td><?php echo $lead['email'];?></td>
 			                <td><?php echo date("m/d/Y h:i a", strtotime($lead['created_at']));?></td>
-			                <td><a href="#" class="btn btn-primary pull-right">Detail</a></td>
+			                <td><a href="detail.php?id=<?php echo $lead['id'];?>" class="btn btn-primary pull-right">Detail</a></td>
 			                
 			            </tr>
 	        	<?php

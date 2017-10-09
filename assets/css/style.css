@@ -34,3 +34,6 @@ label {
     border: 1px solid #dfdfdf;
     border-radius: .25rem;
 }
+.detail-text {
+    border-bottom: 1px dotted;
+}
