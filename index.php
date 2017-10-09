@@ -1,3 +1,4 @@
+<?php session_start(); $_SESSION['lastInsertId'] = null;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,7 @@
                 </div>
                 <div class="form-inner">
                     <form class="form-horizontal" action="#_" method="post" id="leadForm">
+                        <input type="hidden" name="formUniqueString" value="<?php echo crypt('leadForm', 'boldLeads'); ?>">
                         <div class="form-group">
                             <label for="first_name" class="col-lg-3">First Name</label>
                             <div class="col-lg-9">
