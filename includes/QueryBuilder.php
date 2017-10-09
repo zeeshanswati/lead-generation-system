@@ -132,6 +132,17 @@ class QueryBuilder {
 		}
 		return $this;
 	}
+
+	public function getById($id = 0) {
+		
+		$this->where = 'id = ' . $id;
+		$this->statement = 'select * from '. $this->table;
+		$this->statement .= ' where ' . $this->where;
+		
+		$statement = self::$connetion->prepare($this->statement);
+		$statement->execute();
+		return  $statement->fetch();
+	}
 }
 
 
