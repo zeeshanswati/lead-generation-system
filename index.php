@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bold Leads</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -22,7 +23,7 @@
                     <h4>There is No Harm in Talking with us</h4>
                 </div>
                 <div class="form-inner">
-                    <form class="form-horizontal" action="#_" method="post">
+                    <form class="form-horizontal" action="#_" method="post" id="leadForm">
                         <div class="form-group">
                             <label for="first_name" class="col-lg-3">First Name</label>
                             <div class="col-lg-9">
@@ -70,5 +71,6 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="assets/js/lead.js"></script>
 </body>
 </html>                             
