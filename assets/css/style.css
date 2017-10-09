@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 body {
 	background: #f8f8f8;
 	color: #595f64;
+	font-family: 'Quicksand', sans-serif;
 }
 label {
 	text-align: left;
