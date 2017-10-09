@@ -1,0 +1,36 @@
+body {
+	background: #f8f8f8;
+	color: #595f64;
+}
+label {
+	text-align: left;
+	padding: calc(.6rem - 0px *2);
+	font-weight: normal;
+	font-size: 15px;
+}
+.form-inner {
+	padding: 1.25rem;
+}
+.title-top {
+	margin: 40px 0 12px;
+}
+.form-adj {
+	width: 600px;
+	margin:  0 auto 20px;
+	float: none;
+	max-width: 100%;
+}
+.form-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f7f7f9;
+    border-bottom: 1px solid #dfdfdf;
+}
+.form-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: .25rem;
+}
