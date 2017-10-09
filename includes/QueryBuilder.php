@@ -13,6 +13,7 @@ class QueryBuilder {
 	private $where     = null;
 	private $columns   = null;
 	private $statement = null;
+	private $orderBy = null;
 
 	function __construct() {
 		$this->initDB();
@@ -98,4 +99,46 @@ class QueryBuilder {
 		}
 		return $this;
 	}
+
+	public function get($columns = []) {
+		if (empty($columns)) {
+			$this->columns = ' * ';
+		} else {
+			$this->columns = implode(", ", $columns);
+		}
+		//print_r($this->where );
+		return $this->executeSelectStatement();
+		//return $this->execute();
+		//return self::$connetion->fetchAll();
+	}
+
+	private function executeSelectStatement() {
+		$this->statement = 'select '. $this->columns . ' from ' . $this->table;
+		if (!empty($this->where)) {
+			$this->statement .= ' where ' . $this->where;
+		}
+		if (!empty($this->orderBy)) {
+			$this->statement .=  $this->orderBy;
+		}
+		//echo $this->statement;
+		$statement = self::$connetion->prepare($this->statement);
+		$statement->execute();
+		return  $statement->fetchAll();
+	}
+
+	public function orderBy($column = '', $order = 'asc') {
+		if (!empty($column)) {
+			$this->orderBy = ' order by '. $column . " ". $order;
+		}
+		return $this;
+	}
 }
+
+
+
+
+
+
+
+
+
